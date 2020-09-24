@@ -9,5 +9,5 @@ module top(
     .slow_clock(clk)
   );
 
-  cpu cpu(.clk, .n_rst(pin_n_reset), .led(pin_led));
+  mother_board mother_board(.clk, .n_rst(pin_n_reset), .led(pin_led));
 endmodule
