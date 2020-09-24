@@ -6,10 +6,7 @@ module cpu(
 
 logic a, next_a;
 
-always_ff @(posedge clk) begin
-    if (-n_rst) a <= 1'b0;
-    else        a <= next_a;
-end
+dff dff(.clk, .n_rst, .in(next_a), .out(a));
 
 assign led = a;
 
