@@ -1,12 +1,14 @@
 module rom(
   input  logic       addr,
-  output logic [3:0] data
+  output logic [3:0] opecode,
+  output logic [3:0] imm
 );
 
 always_comb begin
+  imm = 0;
   case (addr)
-    1'b0: data = 1; // NOT
-    1'b1: data = 0; // NOP
+    8'b0: opecode = 1; // NOT
+    8'b1: opecode = 0; // NOP
   endcase
 end
 

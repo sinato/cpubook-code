@@ -1,7 +1,8 @@
 module cpu(
     input  logic       clk,
     input  logic       n_rst,
-    input  logic [3:0] data,
+    input  logic [3:0] opecode,
+    input  logic [3:0] imm,
     input  logic [3:0] switch,
     output logic       addr,
     output logic [3:0] led
@@ -24,7 +25,7 @@ dff dff_pc(.clk, .n_rst, .in(next_ip), .out(ip));
 assign addr = ip;
 
 always_comb begin
-    unique case(data)
+    unique case(opecode)
         0: next_out = 0;       // LED OFF
         1: next_b = a;         // MOV A, B
         4: next_a = b;         // MOV B, A
