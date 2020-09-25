@@ -8,7 +8,10 @@ module cpu(
 );
 
 logic [3:0] a, next_a;
-dff4 dff_alu(.clk, .n_rst, .in(next_a), .out(a));
+dff4 dff_a(.clk, .n_rst, .in(next_a), .out(a));
+
+logic [3:0] b, next_b;
+dff4 dff_b(.clk, .n_rst, .in(next_b), .out(b));
 
 // Output Register
 logic [3:0] out, next_out;
