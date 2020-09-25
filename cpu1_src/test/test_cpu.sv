@@ -21,6 +21,12 @@ module test_cpu();
         // Scenario1. LED OFF
         #100; assign data = 0; // always 0
 
+        #100; assign switch = 3; assign data = 2; // IN A
+        #100; assign data = 1; // MOV A, B
+        #100; assign switch = 6; assign data = 6; // IN B
+        #100; assign data = 4; // MOV B, A
+        #100; assign data = 9; // OUT B
+
         #2000;
         $finish();
     end

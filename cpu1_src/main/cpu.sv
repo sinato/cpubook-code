@@ -26,7 +26,11 @@ assign addr = ip;
 always_comb begin
     unique case(data)
         0: next_out = 0;       // LED OFF
-        1: next_out = switch;  // LED ON
+        1: next_b = a;         // MOV A, B
+        4: next_a = b;         // MOV B, A
+        2: next_a = switch;    // IN A
+        6: next_b = switch;    // IN B
+        9: next_out = b;       // OUT B
         default: ;
     endcase
 end
