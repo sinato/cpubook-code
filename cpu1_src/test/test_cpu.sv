@@ -1,7 +1,8 @@
 `timescale 1ns/1ps
 module test_cpu();
 
-    logic clk, n_rst, data, addr, led;
+    logic clk, n_rst, data, addr;
+    logic [3:0] led;
     cpu cpu(.*);
 
     always  #5 clk = ~clk;

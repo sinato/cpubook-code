@@ -1,7 +1,8 @@
 module mother_board(
-    input  clk,
-    input  n_rst,
-    output led
+    input  logic       clk,
+    input  logic       n_rst,
+    input  logic [3:0] switch,
+    output logic [3:0] led
 );
 
 logic addr, data;
