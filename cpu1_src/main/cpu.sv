@@ -4,7 +4,7 @@ module cpu(
     input  logic [3:0] opecode,
     input  logic [3:0] imm,
     input  logic [3:0] switch,
-    output logic       addr,
+    output logic [3:0] addr,
     output logic [3:0] led
 );
 
@@ -18,19 +18,20 @@ dff4 dff_b(.clk, .n_rst, .in(next_b), .out(b));
 // Output register
 logic [3:0] out, next_out;
 dff4 dff_output(.clk, .n_rst, .in(next_out), .out(out));
-assign led = out;
 
 // Flag register
 logic cf, next_cf;
 dff dff_flag(.clk, .n_rst, .in(next_cf), .out(cf));
-assign next_cf = cf;
 
-// Program Counter
-logic ip, next_ip;
-dff dff_pc(.clk, .n_rst, .in(next_ip), .out(ip));
-assign addr = ip;
+// Instruction register
+logic [3:0] ip, next_ip;
+dff4 dff_ip(.clk, .n_rst, .in(next_ip), .out(ip));
 
 always_comb begin
+    led = out;
+    next_cf = 1'b0;
+    addr = ip;
+    next_ip = ip + 1'b1;
     unique case(opecode)
         1:  next_b = a;                    // MOV A, B
         4:  next_a = b;                    // MOV B, A
@@ -45,6 +46,5 @@ always_comb begin
         default: ;
     endcase
 end
-assign next_ip = ip + 1'b1;
 
 endmodule
