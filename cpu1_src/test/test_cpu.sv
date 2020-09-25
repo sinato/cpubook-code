@@ -7,14 +7,14 @@ module test_cpu();
 
     always  #5 clk = ~clk;
     initial clk = 1'b0;
-    initial n_rst = 1'b1; // initialize D-flipflop
+    initial n_rst = 1'b0; // initialize D-flipflop
     initial opecode = 0;
     initial imm = 0;
     initial switch = 'b1;
 
     initial begin
         #10;
-        assign n_rst = 1'b0;
+        assign n_rst = 1'b1;
 
         // Scenario1. LED ON
         #90; assign opecode = 1; assign switch = 5;

@@ -29,9 +29,14 @@ dff4 dff_ip(.clk, .n_rst, .in(next_ip), .out(ip));
 
 always_comb begin
     led = out;
-    next_cf = 1'b0;
     addr = ip;
-    next_ip = ip + 1'b1;
+
+    next_cf = 1'b0;
+    next_ip = ip + 1;
+    next_a = a;
+    next_b = b;
+    next_out = out;
+
     unique case(opecode)
         1:  next_b = a;                    // MOV A, B
         4:  next_a = b;                    // MOV B, A

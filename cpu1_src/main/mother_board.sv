@@ -5,8 +5,8 @@ module mother_board(
     output logic [3:0] led
 );
 
-logic addr, data;
-rom rom(.addr, .data);
-cpu cpu(.clk, .n_rst, .data, .switch, .addr, .led);
+logic [3:0] addr, opecode, imm;
+rom rom(.addr, .opecode, .imm);
+cpu cpu(.clk, .n_rst, .opecode, .imm, .switch, .addr, .led);
 
 endmodule
