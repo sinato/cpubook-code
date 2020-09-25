@@ -34,6 +34,11 @@ module test_cpu();
         #50; assign opecode = 0; assign imm = 1; // ADD A, IMM
         #50; assign opecode = 5; assign imm = 1; // ADD A, IMM
 
+        #50; assign opecode = 15; assign imm = 3; // JMP IMM (false)
+        #50; assign opecode = 3; assign imm = 10; // MOV A, IMM
+        #10; assign opecode = 0; assign imm = 10; // ADD A, IMM
+        #30; assign opecode = 14; assign imm = 7; // JNC IMM (true)
+
         #2000;
         $finish();
     end

@@ -43,6 +43,8 @@ always_comb begin
         11: next_out = imm;                // OUT IMM
         0:  {next_cf, next_a} = a + imm;   // ADD A, IMM
         5:  {next_cf, next_b} = b + imm;   // ADD B, IMM
+        15: next_ip = imm;                 // JMP IMM
+        14: next_ip = cf ? ip + 1 : imm;   // JNC IMM
         default: ;
     endcase
 end
