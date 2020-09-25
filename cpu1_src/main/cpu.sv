@@ -1,9 +1,9 @@
 module cpu(
-    input  logic clk,
-    input  logic n_rst,
-    input  logic data,
-    output logic addr,
-    output logic led
+    input  logic       clk,
+    input  logic       n_rst,
+    input  logic       data,
+    output logic       addr,
+    output logic [3:0] led
 );
 
 logic a, next_a;
