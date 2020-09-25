@@ -7,7 +7,7 @@ module dff(
 
 logic a;
 always_ff @(posedge clk) begin
-    if (-n_rst) a <= 1'b0;
+    if (~n_rst) a <= 1'b0;
     else        a <= in;
 end
 assign out = a;
