@@ -20,13 +20,19 @@ module test_cpu();
         #90; assign opecode = 1; assign switch = 5;
 
         // Scenario1. LED OFF
-        #100; assign opecode = 0; // always 0
+        #50; assign opecode = 0; // always 0
 
-        #100; assign switch = 3; assign opecode = 2; // IN A
-        #100; assign opecode = 1; // MOV A, B
-        #100; assign switch = 6; assign opecode = 6; // IN B
-        #100; assign opecode = 4; // MOV B, A
-        #100; assign opecode = 9; // OUT B
+        #50; assign switch = 3; assign opecode = 2; // IN A
+        #50; assign opecode = 1; // MOV A, B
+        #50; assign switch = 6; assign opecode = 6; // IN B
+        #50; assign opecode = 4; // MOV B, A
+        #50; assign opecode = 9; // OUT B
+
+        #50; assign opecode = 3; assign imm = 0; // MOV A, IMM
+        #50; assign opecode = 7; assign imm = 1; // MOV A, IMM
+
+        #50; assign opecode = 0; assign imm = 1; // ADD A, IMM
+        #50; assign opecode = 5; assign imm = 1; // ADD A, IMM
 
         #2000;
         $finish();

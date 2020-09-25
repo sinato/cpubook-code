@@ -26,12 +26,16 @@ assign addr = ip;
 
 always_comb begin
     unique case(opecode)
-        0: next_out = 0;       // LED OFF
-        1: next_b = a;         // MOV A, B
-        4: next_a = b;         // MOV B, A
-        2: next_a = switch;    // IN A
-        6: next_b = switch;    // IN B
-        9: next_out = b;       // OUT B
+        1:  next_b = a;         // MOV A, B
+        4:  next_a = b;         // MOV B, A
+        3:  next_a = imm;       // MOV A, IMM
+        7:  next_b = imm;       // MOV B, IMM
+        2:  next_a = switch;    // IN A
+        6:  next_b = switch;    // IN B
+        9:  next_out = b;       // OUT B
+        11: next_out = imm;     // OUT IMM
+        0:  next_a = a + imm;   // ADD A, IMM
+        5:  next_b = b + imm;   // ADD B, IMM
         default: ;
     endcase
 end
