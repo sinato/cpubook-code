@@ -15,13 +15,11 @@ module test_cpu();
         #10;
         assign n_rst = 1'b0;
 
-        // Scenario1. NOT
-        #90; assign data = 1'b1;
+        // Scenario1. LED ON
+        #90; assign data = 1'b1; assign switch = 5;
 
-        // Scenario1. NOP
+        // Scenario1. LED OFF
         #100; assign data = 1'b0; // always 0
-        #100; assign data = 1'b1;
-        #90; assign data = 1'b0;  // always 1
 
         #2000;
         $finish();
