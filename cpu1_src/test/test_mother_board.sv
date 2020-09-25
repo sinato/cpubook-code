@@ -8,6 +8,7 @@ module test_mother_board();
     always  #5 clk = ~clk;
     initial clk = 1'b0;
     initial n_rst = 1'b1; // initialize D-flipflop
+    initial switch = 'b1;
 
     initial begin
         #10;

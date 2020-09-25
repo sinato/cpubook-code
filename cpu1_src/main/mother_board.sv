@@ -7,6 +7,6 @@ module mother_board(
 
 logic addr, data;
 rom rom(.addr, .data);
-cpu cpu(.clk, .n_rst, .data, .addr, .led);
+cpu cpu(.clk, .n_rst, .data, .switch, .addr, .led);
 
 endmodule
