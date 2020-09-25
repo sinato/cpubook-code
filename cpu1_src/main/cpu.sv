@@ -9,7 +9,11 @@ module cpu(
 
 logic [3:0] a, next_a;
 dff4 dff_alu(.clk, .n_rst, .in(next_a), .out(a));
-assign led = a;
+
+// Output Register
+logic [3:0] out, next_out;
+dff4 dff_output(.clk, .n_rst, .in(next_out), .out(out));
+assign led = out;
 
 // Program Counter
 logic ip, next_ip;
@@ -18,8 +22,8 @@ assign addr = ip;
 
 always_comb begin
     unique case(data)
-        0: next_a = 0;       // LED OFF
-        1: next_a = switch;  // LED ON
+        0: next_out = 0;       // LED OFF
+        1: next_out = switch;  // LED ON
         default: ;
     endcase
 end
