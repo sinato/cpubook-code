@@ -2,6 +2,7 @@ module cpu(
     input  logic       clk,
     input  logic       n_rst,
     input  logic       data,
+    input  logic [3:0] switch,
     output logic       addr,
     output logic [3:0] led
 );
